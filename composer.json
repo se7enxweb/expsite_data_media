@@ -1,0 +1,19 @@
+{
+    "name": "se7enxweb/expsite-data-media",
+    "description": "Media demo content data pack (SQLite delta SQL and binary storage payload) for Exponential CMS. Feature-ripped from netgen/media-site-data.",
+    "type": "ezpublish-legacy-extension",
+    "homepage": "https://se7enx.com",
+    "license": "GNU General Public License v2.0 (or any later version)",
+    "require": {
+        "php": "^8.1 || ^8.2 || ^8.3 || ^8.4"
+    },
+    "extra": {
+        "ezpublish-legacy-extension-name": "expsite_data_media"
+    },
+    "authors": [
+        {
+            "name": "7x",
+            "homepage": "https://se7enx.com"
+        }
+    ]
+}
