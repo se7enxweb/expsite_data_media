@@ -557,7 +557,7 @@ function fixMediaSectionPolicies( $db )
         return;
     }
 
-    $sectionRows = $db->arrayQuery( "SELECT id FROM ezsection WHERE name IN ('Standard','Media') AND id > 3" );
+    $sectionRows = $db->arrayQuery( "SELECT id FROM ezsection WHERE name IN ('Standard','Media') AND id >= 3" );
     $sectionIds = array();
     foreach ( $sectionRows as $row )
     {
@@ -580,6 +580,20 @@ function fixMediaSectionPolicies( $db )
     {
         foreach ( $sectionIds as $sectionId )
         {
+            // Avoid duplicate content/read Section policies.
+            $exists = $db->arrayQuery(
+                "SELECT p.id FROM ezpolicy p
+                 JOIN ezpolicy_limitation pl ON pl.policy_id=p.id
+                 JOIN ezpolicy_limitation_value v ON v.limitation_id=pl.id
+                 WHERE p.role_id=$roleId AND p.module_name='content' AND p.function_name='read'
+                   AND pl.identifier='Section' AND v.value='$sectionId'"
+            );
+            if ( $exists )
+            {
+                eZCLI::instance()->output( "Role $roleName already has content/read for section $sectionId" );
+                continue;
+            }
+
             $policyId++;
             $limitId++;
             $valueId++;
