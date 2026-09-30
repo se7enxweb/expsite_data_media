@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" requires="ezpublish 6.0">
-  <name>expsite_data_media</name>
+  <name>Exponential Site Data Media</name>
   <summary>Media demo content data pack (SQLite delta SQL and binary storage payload) for Exponential CMS. Feature-ripped from netgen/media-site-data.</summary>
   <version>1.0.0</version>
   <copyright>7x</copyright>
